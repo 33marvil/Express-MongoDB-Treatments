@@ -16,31 +16,31 @@ const services = {
     mainController: (container) => homeControllerFactory(),
     getData: (container, data) => {
         return getDataFactory(data);
+    },
+    listDataController: (container, data) => {
+        const getData = container.get('getData', data);
+        return listDataControllerFactory(getData);
+    },
+    // Get id companies
+    listDataByIdController: (container, data) => {
+        const getData = container.get('getData', data);
+        return listDataByIdControllerFactory(getData);
+    },
+    // Update id companies
+    updateDataController: (container, data) => {
+        const getData = container.get('getData', data);
+        return updateDataControllerFactory(getData);
+    },
+    // Delete id companies
+    deleteDataController: (container, data) => {
+        const getData = container.get('getData', data);
+        return deleteDataControllerFactory(getData);
+    },
+    // Create id 
+    createDataController: (container, data) => {
+        const getData = container.get('getData', data);
+        return createDataControllerFactory(getData);
     }
-    // listDataController: (container, data) => {
-    //     const getData = container.get('getData', data);
-    //     return listDataControllerFactory(getData);
-    // },
-    // // Get id companies
-    // listDataByIdController: (container, data) => {
-    //     const getData = container.get('getData', data);
-    //     return listDataByIdControllerFactory(getData);
-    // },
-    // // Update id companies
-    // updateDataController: (container, data) => {
-    //     const getData = container.get('getData', data);
-    //     return updateDataControllerFactory(getData);
-    // },
-    // // Delete id companies
-    // deleteDataController: (container, data) => {
-    //     const getData = container.get('getData', data);
-    //     return deleteDataControllerFactory(getData);
-    // },
-    // // Create id 
-    // createDataController: (container, data) => {
-    //     const getData = container.get('getData', data);
-    //     return createDataControllerFactory(getData);
-    // }
 };
 
 
