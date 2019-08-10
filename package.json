@@ -1,0 +1,29 @@
+{
+  "name": "linkedin",
+  "version": "1.0.0",
+  "description": "ExpressJS - CRUD",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --verbose app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/herdez/express--mongodb-crud-api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/herdez/express--mongodb-crud-api"
+  },
+  "homepage": "https://gitlab.com/herdez/express--mongodb-crud-api",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.6.8",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.4"
+  }
+}
