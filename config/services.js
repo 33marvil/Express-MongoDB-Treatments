@@ -2,11 +2,11 @@
 
 const homeControllerFactory = require('../src/controllers/homeController');
 // require lisDataController
-// const listDataControllerFactory = require('../src/controllers/listDataController');
-// const listDataByIdControllerFactory = require('../src/controllers/listDataByIdController');
-// const updateDataControllerFactory = require('../src/controllers/updateDataController');
-// const deleteDataControllerFactory = require('../src/controllers/deleteDataController');
-// const createDataControllerFactory = require('../src/controllers/createDataController');
+const listDataControllerFactory = require('../src/controllers/listDataController');
+const listDataByIdControllerFactory = require('../src/controllers/listDataByIdController');
+const updateDataControllerFactory = require('../src/controllers/updateDataController');
+const deleteDataControllerFactory = require('../src/controllers/deleteDataController');
+const createDataControllerFactory = require('../src/controllers/createDataController');
 
 
 // require getData services

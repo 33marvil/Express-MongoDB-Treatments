@@ -8,15 +8,17 @@ const container = require('../../container/container')(services);// container re
 const { Router } = require('express');
 const app = Router();
 
-// const Company = require('../models/Company');
-// const Job = require('../models/Job');
-
+// testing model User
+const User = require('../models/User');
 const Treatment = require('../models/Treatment');
 
-// 
 app.get('/', container.get('mainController'));
 
+// Testing Schema User
+app.post('/users', container.get('createDataController', User));
 
 
+// Testing Schema Treatment
+app.post('/treatments', container.get('createDataController', Treatment));
 
 module.exports = app;
