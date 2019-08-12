@@ -1,7 +1,6 @@
 // router configuration
 const services = require('../../config/services');
 
-
 // Injection services as dependencies
 const container = require('../../container/container')(services);// container recibe el service como injection
 
@@ -16,6 +15,7 @@ app.get('/', container.get('mainController'));
 
 // Testing Schema User
 app.post('/users', container.get('createDataController', User));
+app.get('/users', container.get('listDataController', User));
 
 
 
