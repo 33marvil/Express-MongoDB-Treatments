@@ -30,7 +30,7 @@ app.put('/users/:id', container.get('updateDataController', User));
 // Testing Endpoint Appointments
 // app.post('/appointments', container.get('createDataController', Appointment));
 app.get('/appointments', container.get('listDataController', Appointment));
-app.get('/appointments/:id', container.get('listDataByIdController', Appointment));
+// app.get('/appointments/:id', container.get('listDataByIdController', Appointment));
 
 
 
