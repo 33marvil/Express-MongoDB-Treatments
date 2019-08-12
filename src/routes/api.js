@@ -28,7 +28,9 @@ app.put('/users/:id', container.get('updateDataController', User));
 // app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
 
 // Testing Endpoint Appointments
-app.post('/appointments', container.get('createDataController', Appointment));
+// app.post('/appointments', container.get('createDataController', Appointment));
+app.get('/appointments', container.get('listDataController', Appointment));
+app.get('/appointments/:id', container.get('listDataByIdController', Appointment));
 
 
 
