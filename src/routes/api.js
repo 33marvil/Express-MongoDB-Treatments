@@ -16,6 +16,7 @@ app.get('/', container.get('mainController'));
 // Testing Schema User
 app.post('/users', container.get('createDataController', User));
 app.get('/users', container.get('listDataController', User));
+app.get('/users/:id', container.get('listDataByIdController', User));
 
 
 
