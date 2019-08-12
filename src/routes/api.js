@@ -18,7 +18,8 @@ app.get('/', container.get('mainController'));
 app.post('/users', container.get('createDataController', User));
 
 
+
 // Testing Schema Treatment
-app.post('/treatments', container.get('createDataController', Treatment));
+// app.post('/treatments', container.get('createDataController', Treatment));
 
 module.exports = app;

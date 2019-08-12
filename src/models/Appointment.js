@@ -7,7 +7,7 @@ const Schema = new Schema({
     day: {type: String},
     // Entity relationship Model ** one to many **
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-     // Entity relationship Model ** one to many **
+    // Entity relationship Model ** one to many **
     treatment: { type: mongoose.Schema.Types.ObjectId, ref: 'Treatment'}
 })
 
