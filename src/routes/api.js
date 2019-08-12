@@ -24,7 +24,7 @@ app.put('/users/:id', container.get('updateDataController', User));
 
 // Testing Endpoint Treatments
 app.post('/treatments', container.get('createDataController', Treatment , Appointment));
-
+app.get('/treatments', container.get('listDataController', Treatment));
 // Testing Schema Treatment
 // app.post('/treatments', container.get('createDataController', Treatment));
 
