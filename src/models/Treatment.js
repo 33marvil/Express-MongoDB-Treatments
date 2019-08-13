@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-<<<<<<< HEAD
-const Schema = new Schema({
-    
-})
-=======
+
 const Schema = new mongoose.Schema({
     
     _id: mongoose.Schema.Types.ObjectId,
@@ -18,4 +14,4 @@ const Schema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Treatment', Schema);
->>>>>>> endpoint-user
+

@@ -24,7 +24,7 @@ app.put('/users/:id', container.get('updateDataController', User));
 
 
 // Testing Endpoint Treatments
-<<<<<<< HEAD
+
 // app.post('/treatments', container.get('createDataController', Treatment , Appointment));
 // app.get('/treatments', container.get('listDataController', Treatment));
 // app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
@@ -34,11 +34,10 @@ app.put('/users/:id', container.get('updateDataController', User));
 app.get('/appointments', container.get('listDataController', Appointment));
 app.get('/appointments/:id', container.get('listDataByIdController', Appointment));
 
-=======
 app.post('/treatments', Treatments.create);
 // app.get('/treatments', container.get('listDataController', Treatment));
 // app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
->>>>>>> endpoint-treatments
+
 
 
 module.exports = app;
