@@ -6,6 +6,7 @@ const Schema = new Schema({
 })
 =======
 const Schema = new mongoose.Schema({
+    
     _id: mongoose.Schema.Types.ObjectId,
     description: { type: String },
     listOfTreatments: { type: Array, "default": [] },
