@@ -9,6 +9,8 @@ const deleteDataControllerFactory = require('../src/controllers/deleteDataContro
 const createDataControllerFactory = require('../src/controllers/createDataController');
 
 
+
+
 // require getData services
 const getDataFactory = require('../services/getData');
 
@@ -40,7 +42,7 @@ const services = {
     createDataController: (container, data) => {
         const getData = container.get('getData', data);
         return createDataControllerFactory(getData);
-    }
+    },
 };
 
 

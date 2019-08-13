@@ -7,9 +7,10 @@ const container = require('../../container/container')(services);// container re
 const { Router } = require('express');
 const app = Router();
 
-// testing model User
+// testing model User, Appointments, Treatments
 const User = require('../models/User');
-const Treatment = require('../models/Treatment');
+const Treatments = require('../controllers/Treatments/treatments');
+    // console.log(Treatments);
 const Appointment = require('../models/Appointment');
 
 
@@ -23,7 +24,7 @@ app.put('/users/:id', container.get('updateDataController', User));
 
 
 // Testing Endpoint Treatments
-app.post('/treatments', container.get('Treatments/treatments', Treatment , Appointment));
+app.post('/treatments', Treatments.create);
 // app.get('/treatments', container.get('listDataController', Treatment));
 // app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
 
