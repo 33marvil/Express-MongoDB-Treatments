@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
+
 const Treatment = require('../../models/Treatment');
-// const Appointment = require('../../models/Appointment');
+const Appointment = require('../../models/Appointment');
 const User = require('../../models/User');
 console.log(User)
 
@@ -28,21 +30,29 @@ const controller = {
                       listOfTreatments: listOfTreatments,                     
                       user: userId
                   });
-                  console.log(newTreatment);                                      
-                  newTreatment
-                  .save()
-                  .then(treatment => { // promesa de .save()
-                    res
-                      .json({
-                        type: 'Treatment created',
-                        data: treatment
-                      })
-                      .status(200)
-                      })
-                  .catch(err => {
-                    console.log(`caugth error: ${err}`);
-                    return res.status(500).json(err);
-                  })                  
+                //   console.log(newTreatment);                                      
+                newTreatment
+                // Identificar que sea recording the new  Treatment
+                    .save((err, treatmentSave) => {                          
+                      if (err) throw err;       
+                      console.log(treatmentSave);
+                      // Poder extraer los tiempo del la listOfTreatment en consola
+                  })
+
+                  
+                  // Create the appointment de acuerdo a el número de treatments
+                //   .then(treatment => { // promesa de .save()
+                //     // res
+                //     //   .json({
+                //     //     type: 'Treatment created',
+                //     //     data: treatment
+                //     //   })
+                //     //   .status(200)
+                //     //   })
+                // //   .catch(err => {
+                // //     console.log(`caugth error: ${err}`);
+                // //     return res.status(500).json(err);
+                //   })                  
             })
             .catch(err => {
                 console.log(`caugth error: ${err}`);
