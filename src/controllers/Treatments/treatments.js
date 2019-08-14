@@ -36,10 +36,16 @@ const controller = {
                     .save((err, treatmentSave) => {                          
                       if (err) throw err;       
                       console.log(treatmentSave);
-                      // Poder extraer los tiempo del la listOfTreatment en consola
+                      // get the time of the listOfTreatment en console
+                      treatmentSave.listOfTreatments.forEach((time) => {
+                        console.log(time);
+                        // Create appointmnet para obtener su "id" 
+                        // 1 Agregar list of appointment the id od appointment create
+                      });
                   })
 
-                  
+
+
                   // Create the appointment de acuerdo a el número de treatments
                 //   .then(treatment => { // promesa de .save()
                 //     // res
