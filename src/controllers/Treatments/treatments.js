@@ -1,10 +1,27 @@
 const mongoose = require('mongoose');
-const fs = require('fs');
+
 
 const Treatment = require('../../models/Treatment');
 const Appointment = require('../../models/Appointment');
 const User = require('../../models/User');
 console.log(User)
+
+// Create appointment for get "id" 
+const appointmentControl = (user, time, treatmentId) => {
+    const newAppointment = new Appointment({
+        _id: mongoose.Types.ObjectId(),
+        name: user.name,
+        phoneNumber: user.phoneNumber,
+        day: time,
+        user: user.id,
+        treatment: treatmentId
+    });
+    // console.log(newAppointment);
+    newAppointment
+    .save()
+    // console.log(newAppointment.id);
+    return newAppointment.id
+};
 
 const controller = {
         create: (req, res) => {
@@ -21,7 +38,7 @@ const controller = {
         User
             .findById(userId)
             .exec()
-            .then(User => {
+            .then(user => {
                 // console.log(user)     
                 // Create Object Treatment           
                   const newTreatment = new Treatment ({
@@ -32,15 +49,16 @@ const controller = {
                   });
                 //   console.log(newTreatment);                                      
                 newTreatment
-                // Identificar que sea recording the new  Treatment
+                // Identificar que sé ha save the new  Treatment
                     .save((err, treatmentSave) => {                          
                       if (err) throw err;       
                       console.log(treatmentSave);
                       // get the time of the listOfTreatment en console
                       treatmentSave.listOfTreatments.forEach((time) => {
-                        console.log(time);
-                        // Create appointmnet para obtener su "id" 
-                        // 1 Agregar list of appointment the id od appointment create
+                        // console.log(time);
+                        console.log(appointmentControl(user, time, treatmentSave.id));
+                        // 1 Add list of appointment the id of appointment create                    
+                          
                       });
                   })
 
