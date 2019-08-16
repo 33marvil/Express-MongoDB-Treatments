@@ -6,7 +6,7 @@ const Appointment = require('../../models/Appointment');
 const User = require('../../models/User');
 console.log(User)
 
-// Create appointment for get "id" 
+// 1 Create appointment for get "id" 
 const appointmentControl = (user, time, treatmentId) => {
     const newAppointment = new Appointment({
         _id: mongoose.Types.ObjectId(),
@@ -49,52 +49,63 @@ const controller = {
                   });
                 //   console.log(newTreatment);                                      
                 newTreatment
-                // Identificar que sé ha save the new  Treatment
+                // Identificar que sé ha save the new  Treatment        
                     .save((err, treatmentSave) => {                          
                       if (err) throw err;       
                       console.log(treatmentSave);
                       // get the time of the listOfTreatment en console
                       treatmentSave.listOfTreatments.forEach((time) => {
                         // console.log(time);
-                        console.log(appointmentControl(user, time, treatmentSave.id));
-                        // 1 Add list of appointment the id of appointment create                    
-                          
-                      });
+                        // 2 Add list of appointment the id of appointment create                    
+                        // console.log(appointmentControl(user, time, treatmentSave.id));
+                        // 3 Get Appointment Id for list Of Appointment
+                        // console.log(appointmentId);                                                              
+                          treatmentSave.appointments.push(appointmentControl(user, time, treatmentSave.id))
+                        });
+                        console.log(treatmentSave);
+                        treatmentSave
+                                                                 
+                            .save()
+                        // Save treatmentSave and response and catch
+                                // return treatmentSave
+                            
+                            .then(data => {
+                                res
+                                    .json({
+                                        type: 'Treatment created',
+                                        data: data
+                                    })
+                                    .status(200)
+                            })
+                            .catch(err => {
+                                console.log(`caugth error: ${err}`);
+                                return res.status(500).json(err);
+                        })   
                   })
-
-
-
-                  // Create the appointment de acuerdo a el número de treatments
-                //   .then(treatment => { // promesa de .save()
-                //     // res
-                //     //   .json({
-                //     //     type: 'Treatment created',
-                //     //     data: treatment
-                //     //   })
-                //     //   .status(200)
-                //     //   })
-                // //   .catch(err => {
-                // //     console.log(`caugth error: ${err}`);
-                // //     return res.status(500).json(err);
-                //   })                  
             })
             .catch(err => {
                 console.log(`caugth error: ${err}`);
                 return res.status(500).json(err);
-            })
-            
-            
-        // utilizo propiedad de Treatment -- appointments:  push[id appointment]
-
-
-        
-        
-    }
-
-        // Guardar
-    
-        
+            })       
+        },
+        find: (req, res) => {
+            // console.log(req.params);
+            Treatment
+                .find({ user: req.params.id })
+                .exec()
+                .then(data => {
+                    res
+                        .json({
+                            type: 'Treatments Found.',
+                            data: data
+                        })
+                        .status(200)
+                })
+                .catch(err => {
+                    console.log(`caugth error: ${err}`);
+                    return res.status(500).json(err);
+                })                 
+        }          
 }
-
 
 module.exports = controller;
