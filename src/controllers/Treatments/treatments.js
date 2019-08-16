@@ -64,11 +64,9 @@ const controller = {
                         });
                         console.log(treatmentSave);
                         treatmentSave
-                                                                 
-                            .save()
                         // Save treatmentSave and response and catch
-                                // return treatmentSave
-                            
+                        // return treatmentSave                        
+                            .save()                            
                             .then(data => {
                                 res
                                     .json({
@@ -88,6 +86,7 @@ const controller = {
                 return res.status(500).json(err);
             })       
         },
+        // GET ALL treatments by userId.
         find: (req, res) => {
             // console.log(req.params);
             Treatment
@@ -105,7 +104,7 @@ const controller = {
                     console.log(`caugth error: ${err}`);
                     return res.status(500).json(err);
                 })                 
-        }          
+        } 
 }
 
 module.exports = controller;

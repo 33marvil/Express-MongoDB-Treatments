@@ -13,6 +13,7 @@ const Treatments = require('../controllers/Treatments/treatments');
 const Treatment = require('../models/Treatment'); 
     // console.log(Treatments);
 const Appointment = require('../models/Appointment');
+const Appointments = require('../controllers/Appointments/appointments');
 
 
 app.get('/', container.get('mainController'));
@@ -29,11 +30,20 @@ app.post('/treatments', Treatments.create);
 app.get('/treatments', container.get('listDataController', Treatment));
 app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
 
+// Testing Endpoint Appointments
+app.get('/appointments', container.get('listDataController', Appointment));
+app.get('/appointments/:id', container.get('listDataByIdController', Appointment));
+
 // GET http://localhost:3000/api/v1/treatments/5c4e2bedc9e7a87bb403d54b/appointments
 // get all appointments byId treatments
 
 // GET ALL treatments byID User
 app.get('/users/:id/treatments', Treatments.find);
+
+// GET ALL appointments by treatmentId.
+app.get('/treatments/:id/appointments', Appointments.find);
+
+
 
 
 module.exports = app;
