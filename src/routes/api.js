@@ -53,7 +53,10 @@ app.get('/users/:id/treatments', Treatments.find);
 // GET ALL appointments by treatmentId.
 app.get('/treatments/:id/appointments', Appointments.find);
 
-
+// --//**
+// Se encuentra treatment a modificar por Id.
+// Se toma en cuenta el usuario para encontrar tratamiento.
+app.put('/treatments/:id', Treatments.update);
 
 
 

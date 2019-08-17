@@ -104,7 +104,14 @@ const controller = {
                     console.log(`caugth error: ${err}`);
                     return res.status(500).json(err);
                 })                 
-        } 
+        },
+        // --//**
+        update: (req, res) => {
+            // Validate User
+
+            // Found Treatment
+
+        }
 }
 
 module.exports = controller;
