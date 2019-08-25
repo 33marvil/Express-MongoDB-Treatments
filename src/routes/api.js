@@ -38,7 +38,8 @@ app.get('/appointments/:id', container.get('listDataByIdController', Appointment
 
 app.post('/treatments', Treatments.create);
 app.get('/treatments', container.get('listDataController', Treatment));
-app.get('/treatments/:id', container.get('listDataByIdController', Treatment));
+
+
 
 // Testing Endpoint Appointments
 app.get('/appointments', container.get('listDataController', Appointment));

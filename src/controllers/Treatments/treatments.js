@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const Treatment = require('../../models/Treatment');
 const Appointment = require('../../models/Appointment');
 const User = require('../../models/User');
@@ -86,7 +85,7 @@ const controller = {
                 return res.status(500).json(err);
             })       
         },
-        // GET ALL treatments by userId.
+        // GET ALL treatments by userId. app.get('/users/:id/treatments', Treatments.find);
         find: (req, res) => {
             // console.log(req.params);
             Treatment
@@ -105,11 +104,52 @@ const controller = {
                     return res.status(500).json(err);
                 })                 
         },
-        // --//**
+        // --//** app.put('/treatments/:id', Treatments.update);
         update: (req, res) => {
-            // Validate User
+            // console.log(req.params);
+            const treatmentId = req.params.id;
+            const userId = req.body.user;
 
-            // Found Treatment
+            User
+                .findById(userId)                                
+                .then(user => {  
+                // 1 Validate User
+                    if (user === null) return res.status(500).json({type: "User Null - error."})        
+                        // console.log(user);
+                        // user
+                        // 2 Found Treatment
+                        // console.log(treatmentId);
+                    Treatment
+                        .findOne({ _id: treatmentId, user: user.id }) // query mongoose “Find” with multiple conditions                           
+                        .then(treatment => {
+                            res
+                                .json({
+                                    type: "Treatment found",
+                                    data: treatment
+                                })
+                                .status(200)
+                        })
+                        .catch(err => {
+                            console.log(`caugth error: ${err}`);
+                            return res.status(500).json(err);
+                        })
+                            
+                    // res
+                    //     .json({
+                    //       type: "User Found.",
+                    //       data: user
+                    //     })
+                    //     .status(200)
+            })                
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            })
+
+                
+                // 3 Modify listOfTreatments / appointments
+
+                // 4 Save Treatment for updating
 
         }
 }
